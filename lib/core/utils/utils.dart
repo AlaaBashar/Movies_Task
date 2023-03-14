@@ -1,6 +1,4 @@
-import 'dart:io';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,67 +25,7 @@ Future<dynamic> openNewPage(BuildContext context, Widget widget,
     }
   });
 }
-Widget getCenterCircularProgress(
-    {double? padding, double? size, Color? color, double radius = 12 , }) {
-  return Container(
-    padding: EdgeInsets.all(padding ?? 0.0),
-    height: size ,
-    width: size ,
-    child: Center(
-      child: CupertinoActivityIndicator(radius: radius,),
-    ),
-  );
-}
-double getScreenWidth(BuildContext context, {bool realWidth = false}) {
-  if (realWidth) {
-    return MediaQuery.of(context).size.width;
-  } //to preview widget like phone scale in preview
 
-  if (kIsWeb) {
-    return MediaQuery.of(context).orientation == Orientation.landscape
-        ? MediaQuery.of(context).size.width / 4
-        : MediaQuery.of(context).size.height / 4;
-  }
-
-  return MediaQuery.of(context).orientation == Orientation.portrait
-      ? MediaQuery.of(context).size.width
-      : MediaQuery.of(context).size.height;
-}
-
-double getScreenHeight(BuildContext context, {bool realHeight = false}) {
-  if (realHeight) {
-    return MediaQuery.of(context).size.height;
-  } //to preview widget like phone scale in preview
-  if (kIsWeb) {
-    return MediaQuery.of(context).orientation == Orientation.landscape
-        ? MediaQuery.of(context).size.height / 1.4
-        : MediaQuery.of(context).size.width / 1.4;
-  }
-  return MediaQuery.of(context).orientation == Orientation.portrait
-      ? MediaQuery.of(context).size.height
-      : MediaQuery.of(context).size.width;
-}
-
-class ProgressCircleDialog {
-  static bool _isShow = false;
-
-  static show(
-      BuildContext context,
-      ) {
-    showDialog(
-        context: context,
-        builder: (_) => const Center(child: CircularProgressIndicator()),
-        barrierDismissible: false);
-    _isShow = true;
-  }
-
-  static dismiss(BuildContext context) {
-    if (_isShow) {
-      Navigator.pop(context);
-      _isShow = false;
-    }
-  }
-}
 
 class MyBlocObserver extends BlocObserver {
   @override
@@ -127,24 +65,7 @@ class MyBlocObserver extends BlocObserver {
   }
 }
 
-void printFullText(String text){
-  final pattern = RegExp('.{1800}');
-  pattern.allMatches(text).forEach((match) => debugPrint(match.group(0)));
-}
 
-
-void fieldFocusChange(
-    BuildContext context,
-    FocusNode currentFocus,
-    FocusNode nextFocus,)
-{
-  currentFocus.unfocus();
-  FocusScope.of(context).requestFocus(nextFocus);
-}
-
-
-
-bool isOpenKeyboard(context)=> MediaQuery.of(context).viewInsets.bottom == 0;
 
 
 

@@ -7,7 +7,7 @@ final GetIt sl = GetIt.instance;
 class DependencyInjectionInit{
   Future<void> init()async{
     ///init Network InterFace
-    final networkInterface = DioNetworkInterfaceImpl(enableLog: true);
+    final networkInterface = DioNetworkInterfaceImpl(enableLog: false);
     sl.registerLazySingleton(() => networkInterface);
 
     ///Register Bloc

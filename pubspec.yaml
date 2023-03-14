@@ -22,9 +22,14 @@ dependencies:
   #Tools Packages
   intl: ^0.17.0
   dartz: ^0.10.1
-
-
+  #Widget_pachages
   cupertino_icons: ^1.0.2
+  youtube_player_flutter: ^8.1.2
+  #Third-party_packages
+  onesignal_flutter: ^3.5.0
+  firebase_core: ^2.7.1
+  cloud_firestore: ^4.4.4
+
 
 dev_dependencies:
   flutter_test:
